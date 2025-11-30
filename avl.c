@@ -101,7 +101,6 @@ Aluno* buscar_avl(AVL *raiz, int matricula) {
 void em_ordem_avl(AVL *raiz) {
     if (raiz) {
         em_ordem_avl(raiz->esq);
-        // MUDOU: campos atualizados
         printf("Matrícula: %d | Nome: %-20s | Nota: %6.2f | Aulas: %6.2f%% | Atividades: %6.2f%% | Categoria: %s\n",
                raiz->aluno.matricula, raiz->aluno.nome, raiz->aluno.nota,
                raiz->aluno.aulas_assistidas, raiz->aluno.atividades_concluidas, raiz->aluno.categoria);
@@ -122,11 +121,10 @@ void exibir_avl_hierarquico(AVL *raiz, int nivel) {
     }
 }
 
-void contar_categorias(AVL *raiz, int counts[6]) {  // MUDOU: agora 6 categorias
+void contar_categorias(AVL *raiz, int counts[6]) { 
     if (raiz) {
         contar_categorias(raiz->esq, counts);
         
-        // MUDOU: novas categorias
         if (strcmp(raiz->aluno.categoria, "Desinteressado") == 0) counts[0]++;
         else if (strcmp(raiz->aluno.categoria, "Com Dificuldade") == 0) counts[1]++;
         else if (strcmp(raiz->aluno.categoria, "Autodidata") == 0) counts[2]++;
